@@ -6,8 +6,9 @@ Revision history for Perl extension WWW::Odeon.
 	- first released version
 1.04  Mon Jul 26 18:55:10 2004
 	- updated list-parsing routine to cope with elements containing
-	  commas, eg "I, Robot". Serves me right for being lazy before
-1.05  Sat Aug 14 09:25:00 2004
+	  commas, eg "I, Robot". Serves me right for being lazy beforeA
+1.05  Bad build, not released
+1.06  Sun Aug 15 2004
 	- added object-oriented API, also permitting cacheing of data
 	  structures to (a) speed things up; (b) reduce any possible
 	  stress to www.odeon.co.uk site

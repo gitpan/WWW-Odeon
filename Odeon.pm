@@ -11,7 +11,7 @@ use vars '$VERSION';
 our @ISA = qw( Exporter );
 our @EXPORT = qw( get_regions get_cinemas get_details );
 
-$VERSION = '1.05';
+$VERSION = '1.06';
 
 
 use constant REGIONS => 'http://www.odeon.co.uk/pls/odeon/Display.page?page=menu_items.js';
