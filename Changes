@@ -12,4 +12,6 @@ Revision history for Perl extension WWW::Odeon.
 	- added object-oriented API, also permitting cacheing of data
 	  structures to (a) speed things up; (b) reduce any possible
 	  stress to www.odeon.co.uk site
+1.07  Wed Dec 01 2004
+        - take account of film names with single apostrophes in them
 

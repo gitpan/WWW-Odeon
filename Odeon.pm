@@ -11,7 +11,7 @@ use vars '$VERSION';
 our @ISA = qw( Exporter );
 our @EXPORT = qw( get_regions get_cinemas get_details );
 
-$VERSION = '1.06';
+$VERSION = '1.07';
 
 
 use constant REGIONS => 'http://www.odeon.co.uk/pls/odeon/Display.page?page=menu_items.js';
@@ -277,18 +277,21 @@ sub availability {
 
 
 # The javascript arrays are of items that are [single|double]-quote delimited and comma-separated
-# As far as I can tell nothing ever has a comma in the item name, which makes parsing very simple
-# however the above isn't true, eg "I, Robot"
 sub _get_items {
 
   my ( $list ) = @_;
   my @items;
 
-  while ( $list =~ /(["'])(.*?)\1/g ) {
-    push @items, $2;
-  }
-
-  @items;
+  # OK, time to stop trying to be quick'n'dirty and split the
+  # list up the way it always should've been done :)
+  # `perldoc -q split' is your (and my) friend
+  push(@items, $+) while $list =~ m{
+      "([^\"\\]*(?:\\.[^\"\\]*)*)",?
+    | ([^,]+),?
+    | ,
+  }gx;
+  push(@items, undef) if substr($list,-1,1) eq ',';
+										  @items;
 
 }
 

@@ -24,7 +24,7 @@ is( $odeon->cache_time, 5, 'Cache time set/retrieved OK' );
 is( $odeon->{_cache_secs}, 300, 'Internal cache time set OK' );
 
 my @regions = sort @{$odeon->regions};
-my @expected = qw( Central_London Channel_Islands Greater_London 
+my @expected = qw( Central_London Greater_London 
 		Midlands North_East_England North_West_England 
 		Scotland South_East_England South_West_England Wales);
 ok( eq_array(\@expected, \@regions), 'Regions data retrieved as expected' );

@@ -16,7 +16,10 @@ ok(1, "Testing module WWW::Odeon Version $WWW::Odeon::VERSION");
 # Insert your test code below, the Test module is use()ed here so read
 # its man page ( perldoc Test ) for help writing this test script.
 
-my $csv = '"one", "two, three","four, five, six" , "seven"';
-my @expect = ( 'one', 'two, three', 'four, five, six', 'seven' );
+
+# this tests some of the internal algorithms
+my $csv = q+"one","two, three","four, five, six","seven","eighth'thing"+;
+my @expect = ( 'one', 'two, three', 'four, five, six', 'seven', "eighth'thing" );
 my @sep = WWW::Odeon::_get_items( $csv );
 is_deeply( \@sep, \@expect, 'Split CSV text string' );
+
