@@ -1,5 +1,6 @@
+#!/usr/bin/perl
 # Before `make install' is performed this script should be runnable with
-# `make test'. After `make install' it should work as `perl test.pl'
+# `make test'. After `make install' it should work as `perl oo.pl'
 
 #########################
 
@@ -36,7 +37,7 @@ ok( eq_array(\@expected, \@regions), 'Cached data matches expectations' );
 
 my @necinemas = sort @{$odeon->cinemas('North East England')};
 # the space after Darlington in the following list is deliberate
-@expected = ( 'Barnsley', 'Darlington ', 'Doncaster', 'Grimsby',
+@expected = ( 'Barnsley', 'Darlington ', 'Doncaster',  # 'Grimsby',  seems to have vanished from list
 		'Harrogate', 'Hull', 'Leeds Bradford',
 		'Newcastle Upon Tyne', 'Sheffield', 'York' );
 ok( eq_array(\@expected, \@necinemas), 'Cinema data retrieved as expected' );

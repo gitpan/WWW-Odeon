@@ -11,7 +11,7 @@ use vars '$VERSION';
 our @ISA = qw( Exporter );
 our @EXPORT = qw( get_regions get_cinemas get_details );
 
-$VERSION = '1.07';
+$VERSION = '1.08';
 
 
 use constant REGIONS => 'http://www.odeon.co.uk/pls/odeon/Display.page?page=menu_items.js';
@@ -291,8 +291,12 @@ sub _get_items {
     | ,
   }gx;
   push(@items, undef) if substr($list,-1,1) eq ',';
-										  @items;
 
+  for ( @items ) {
+    $_ = $1 if /^'(.*)'$/;   # remove leading/trailing single-quotes
+  }
+
+  @items;
 }
 
 
@@ -319,6 +323,9 @@ sub _by_time {
 
 }
 
+
+no warnings 'redefine';
+sub TRACE {} sub DUMP {}
 
 1;
 
