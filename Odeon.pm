@@ -10,7 +10,7 @@ use vars '$VERSION';
 our @ISA = qw( Exporter );
 our @EXPORT = qw( get_regions get_cinemas get_details );
 
-$VERSION = '1.03';
+$VERSION = '1.04';
 
 
 use constant REGIONS => 'http://www.odeon.co.uk/pls/odeon/Display.page?page=menu_items.js';
@@ -96,13 +96,14 @@ sub get_details {
 
 # The javascript arrays are of items that are [single|double]-quote delimited and comma-separated
 # As far as I can tell nothing ever has a comma in the item name, which makes parsing very simple
+# however the above isn't true, eg "I, Robot"
 sub _get_items {
 
+  my ( $list ) = @_;
   my @items;
 
-  for ( split /,/, shift ) {
-    tr/"'\\//d;
-    push @items, $_;
+  while ( $list =~ /(["'])(.*?)\1/g ) {
+    push @items, $2;
   }
 
   @items;
