@@ -1,7 +1,9 @@
 Changes
-Makefile.PL
+LICENCE
 MANIFEST
+Makefile.PL
 Odeon.pm
 README
+t/algorithms.t
 t/retrieval.t
-LICENCE
+t/oo.t
